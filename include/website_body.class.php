@@ -364,7 +364,19 @@ class website_body
         <script src="vendors/jquery.ajaxchimp.min.js"></script>
         <script src="vendors/mail-script.js"></script>
         <script src="js/main.js"></script>
-        <script src="js/pagination.js"></script>
+        <?php
+        $currentPage = basename($_SERVER['PHP_SELF']); // Get the current file name
+
+        // Conditionally load pagination.js only on shop.php
+        if ($currentPage == "shop.php") {
+            echo '<script src="js/shop-pagination.js"></script>';
+        }
+        else{
+            echo'<script src="js/pagination.js"></script>';
+        }
+        ?>
+
+        
         <?php
     }
 

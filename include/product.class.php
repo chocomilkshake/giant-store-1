@@ -9,7 +9,7 @@ class product
 
 
         // Secure database connection
-        $stmt = $con->prepare("SELECT p.id, p.name, c.name AS category_name, sc.name AS subcategory_name, p.branch, p.price, p.img_dir 
+        $stmt = $con->prepare("SELECT p.category ,p.id, p.name, c.name AS category_name, sc.name AS subcategory_name, p.branch, p.price, p.img_dir 
         FROM product p
         LEFT JOIN category c ON p.category = c.id
         LEFT JOIN sub_category sc ON p.sub_category = sc.id
@@ -25,6 +25,7 @@ class product
                 'id' => $row['id'],
                 'name' => $row['name'],
                 'category' => $row['category_name'],
+                'category_id' => $row['category'],
                 'sub_category' => $row['subcategory_name'],
                 'price' => $row['price'],
                 'img_dir' => $row['img_dir']
